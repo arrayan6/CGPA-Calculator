@@ -1,5 +1,5 @@
 # CGPA-Calculator
-CGPA Calculator using C Language
+CGPA Calculator using C++ Language
 
 Here I Upload the Code In TXT format.
 
