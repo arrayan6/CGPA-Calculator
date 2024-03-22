@@ -1,58 +1,62 @@
-#include <stdio.h>
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
 
 int main() {
     int numSubjects;
-    float totalCreditHours = 0, totalGradePoints = 0, totalSubjectMark = 0, totalObtainMark = 0, cgpa;
+    float totalCreditHours = 0.0f, totalGradePoints = 0.0f, totalSubjectMark = 0.0f, totalObtainMark = 0.0f, cgpa;
 
-    printf("Enter the number of subjects: ");
-    scanf("%d", &numSubjects);
+    cout << "Enter the number of subjects: ";
+    cin >> numSubjects;
 
     for (int i = 0; i < numSubjects; i++) {
-        char subjectName[50];
+        string subjectName;
         int creditHours;
         float subjectMark, obtainMark, percentage;
         float gradePoint;
 
-        printf("\nEnter details for subject %d:\n", i + 1);
+        cout << "\nEnter details for subject " << i + 1 << ":\n";
 
-        printf("Subject Name: ");
-        scanf("%s", subjectName);
+        cout << "Subject Name: ";
+        cin >> subjectName;
 
-        printf("Credit Hours: ");
-        scanf("%d", &creditHours);
+        cout << "Credit Hours: ";
+        cin >> creditHours;
 
-        printf("Subject Mark: ");
-        scanf("%f", &subjectMark);
+        cout << "Subject Mark: ";
+        cin >> subjectMark;
         totalSubjectMark += subjectMark;
 
-        printf("Obtain Mark: ");
-        scanf("%f", &obtainMark);
+        cout << "Obtain Mark: ";
+        cin >> obtainMark;
         totalObtainMark += obtainMark;
 
         // Calculate percentage
-        percentage = (obtainMark / subjectMark) * 100;
+        percentage = (obtainMark / subjectMark) * 100.0f; // Ensure floating-point calculation
 
         // Calculate grade point based on percentage
-        if (percentage >= 80) {
-            gradePoint = 4.00;
-        } else if (percentage >= 75) {
-            gradePoint = 3.75;
-        } else if (percentage >= 70) {
-            gradePoint = 3.50;
-        } else if (percentage >= 65) {
-            gradePoint = 3.25;
-        } else if (percentage >= 60) {
-            gradePoint = 3.00;
-        } else if (percentage >= 55) {
-            gradePoint = 2.75;
-        } else if (percentage >= 50) {
-            gradePoint = 2.50;
-        } else if (percentage >= 45) {
-            gradePoint = 2.25;
-        } else if (percentage >= 40) {
-            gradePoint = 2.00;
+        if (percentage >= 80.0f) {
+            gradePoint = 4.00f;
+        } else if (percentage >= 75.0f) {
+            gradePoint = 3.75f;
+        } else if (percentage >= 70.0f) {
+            gradePoint = 3.50f;
+        } else if (percentage >= 65.0f) {
+            gradePoint = 3.25f;
+        } else if (percentage >= 60.0f) {
+            gradePoint = 3.00f;
+        } else if (percentage >= 55.0f) {
+            gradePoint = 2.75f;
+        } else if (percentage >= 50.0f) {
+            gradePoint = 2.50f;
+        } else if (percentage >= 45.0f) {
+            gradePoint = 2.25f;
+        } else if (percentage >= 40.0f) {
+            gradePoint = 2.00f;
         } else {
-            gradePoint = 0.00;
+            gradePoint = 0.00f;
         }
 
         totalCreditHours += creditHours;
@@ -61,34 +65,35 @@ int main() {
 
     cgpa = totalGradePoints / totalCreditHours;
 
-    // Determine CGPA Grand Name
-    const char *grandName;
-    if (cgpa >= 4.00) {
-        grandName = "A+";
-    } else if (cgpa >= 3.75) {
-        grandName = "A";
-    } else if (cgpa >= 3.50) {
-        grandName = "A-";
-    } else if (cgpa >= 3.25) {
-        grandName = "B+";
-    } else if (cgpa >= 3.00) {
-        grandName = "B";
-    } else if (cgpa >= 2.75) {
-        grandName = "B-";
-    } else if (cgpa >= 2.50) {
-        grandName = "C+";
-    } else if (cgpa >= 2.25) {
-        grandName = "C";
-    } else if (cgpa >= 2.00) {
-        grandName = "D";
+    // Determine CGPA Grade Name
+    const char *gradeName;
+    if (cgpa >= 4.00f) {
+        gradeName = "A+";
+    } else if (cgpa >= 3.75f) {
+        gradeName = "A";
+    } else if (cgpa >= 3.50f) {
+        gradeName = "A-";
+    } else if (cgpa >= 3.25f) {
+        gradeName = "B+";
+    } else if (cgpa >= 3.00f) {
+        gradeName = "B";
+    } else if (cgpa >= 2.75f) {
+        gradeName = "B-";
+    } else if (cgpa >= 2.50f) {
+        gradeName = "C+";
+    } else if (cgpa >= 2.25f) {
+        gradeName = "C";
+    } else if (cgpa >= 2.00f) {
+        gradeName = "D";
     } else {
-        grandName = "F";
+        gradeName = "F";
     }
 
-    printf("\nTotal Subject Mark: %.2f\n", totalSubjectMark);
-    printf("Total Obtain Mark: %.2f\n", totalObtainMark);
-    printf("Your CGPA is: %.2f\n", cgpa);
-    printf("Your CGPA Grand Name is: %s\n", grandName);
+    cout << fixed << setprecision(2); // Set output formatting for decimals
+    cout << "\nTotal Subject Mark: " << totalSubjectMark << endl;
+    cout << "Total Obtain Mark: " << totalObtainMark << endl;
+    cout << "Your CGPA is: " << cgpa << endl;
+    cout << "Your CGPA Grade Name is: " << gradeName << endl;
 
     return 0;
 }
